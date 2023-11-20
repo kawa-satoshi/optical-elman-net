@@ -1,7 +1,5 @@
 # RNNの実験モデル
 
-データセット：S&P500
-
 ## 環境設定
 
 Python version = 3.10.12
@@ -26,10 +24,10 @@ poetry shell
 
 実行スクリプトを3つに分けています：「回帰」、「分類」と「メモリー」。
 
-- 回帰課題として旅客数予測とS&P500予測を実装させていただいております。
-- 分類課題としてGoogle's Speech Commands DatasetとIrisを実装させていただいております。
-  - 最後の層の後にSoftmax関数を追加しております。
-- 最後はメモリー課題を別スクリプトとして提供させていただきます。
+- 回帰課題：旅客数予測，S&P500予測
+- 分類課題：Google's Speech Commands Dataset，Iris
+  - 最後の層の後にSoftmax関数を追加。
+- メモリー：過去の入力予測タスク
 
 ### 回帰データセット
 
@@ -38,7 +36,7 @@ poetry shell
 - S&P500予測（```SP500```）
 - 旅客数予測（```airline-passengers```）
 
-```run_regression.py```を実行しますとfloat32とint8のモデルが```tflite_models```というフォルダに保存されます。
+```run_regression.py```を実行すると，float32とint8のモデルが```tflite_models```というフォルダに保存されます。
 
 実行ファイル：
 
@@ -67,7 +65,7 @@ SEQUENCE_LENGTH = 20
 - Google's Speech Commands Dataset（```speech_commands```）
 - Iris（```iris```）
 
-```run_classification.py```を実行しますとfloat32とint8のモデルが```tflite_models```というフォルダに保存されます。
+```run_classification.py```を実行するとfloat32とint8のモデルが```tflite_models```というフォルダに保存されます。
 
 実行ファイル：
 
@@ -89,7 +87,7 @@ MAX_SEQUENCE_LENGTH = 1600
 
 分類データセットに対して、custom活性化関数のスケールを1に固定しています。
 
-Google's Speech Commands Datasetデータセットの入力サイズが16,000というかなり長い時系列であるため、```MAX_SEQUENCE_LENGTH```を設定させていただいております。行った実験では最初の1,600のみを使用して、コマンドを分類しています。
+Google's Speech Commands Datasetデータセットの入力サイズが16,000というかなり長い時系列であるため、```MAX_SEQUENCE_LENGTH```を設定しています。行った実験では最初の1,600のみを使用して、コマンドを分類しています。
 
 ### メモリー課題
 
@@ -97,7 +95,7 @@ Google's Speech Commands Datasetデータセットの入力サイズが16,000と
 
 - メモリー（```memory```）
 
-```run_memory.py```を実行しますとfloat32とint8のモデルが```tflite_models```というフォルダに保存されます。
+```run_memory.py```を実行するとfloat32とint8のモデルが```tflite_models```というフォルダに保存されます。
 
 実行ファイル：
 
@@ -120,7 +118,7 @@ MEMORY_N = 100
 MEMORY_K = 1
 ```
 
-[-1, 1]一様分布に従い、ランダムにサンプリングしたデータを1つの時系列データとして使用しております。
+[-1, 1]一様分布に従い、ランダムにサンプリングしたデータを1つの時系列データとして使用しています。
 
 また、```N```値を入力とし、その```K```値後の数字を予測値として設定しています。
 
@@ -150,5 +148,5 @@ RNNに```1```時点値から```N```時点値の数値を入力し、```N+1```か
 
 ## Int8モデルについて
 
-- Tensorflowのquantization手法による結果に精度が低いことを確認しています。
-- Tensorflow-liteに変える必要があるため、RNN重みを出力する事が出来ないため、PyTorchで提供させてください。
+- Tensorflowのquantization手法による結果に精度が低いことを確認。
+- Tensorflow-liteに変える必要があるため、RNN重みを出力する事が出来ないため、PyTorchで提供。
