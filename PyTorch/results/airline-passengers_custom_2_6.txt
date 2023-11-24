@@ -1,0 +1,129 @@
+====== FLOAT32 MODEL RESULT 0 EPOCHS ======
+Validation l1_loss = 740.2118485613568, l2_loss = 625363.4729420731, mc = nan
+====== INT8 MODEL RESULT 0 EPOCHS ======
+Validation l1_loss = 740.2118485613568, l2_loss = 625363.4729420731, mc = nan
+--------------------------------------------
+epoch 0/1, train loss=219.38714599609375, train l2_loss=70354.5625
+====== FLOAT32 MODEL RESULT 1 EPOCHS ======
+Validation l1_loss = 740.211567204173, l2_loss = 625363.060785061, mc = nan
+====== INT8 MODEL RESULT 1 EPOCHS ======
+Validation l1_loss = 740.211567204173, l2_loss = 625363.060785061, mc = nan
+--------------------------------------------
+epoch 0/99, train loss=183.81500244140625, train l2_loss=55603.30859375
+epoch 1/99, train loss=217.56947326660156, train l2_loss=83461.546875
+epoch 2/99, train loss=161.78775024414062, train l2_loss=35993.140625
+epoch 3/99, train loss=263.3487243652344, train l2_loss=97080.46875
+epoch 4/99, train loss=183.7129364013672, train l2_loss=52723.546875
+epoch 5/99, train loss=193.44711303710938, train l2_loss=69455.25
+epoch 6/99, train loss=227.26885986328125, train l2_loss=71458.21875
+epoch 7/99, train loss=215.93011474609375, train l2_loss=78661.9609375
+epoch 8/99, train loss=203.83773803710938, train l2_loss=70081.984375
+epoch 9/99, train loss=206.92657470703125, train l2_loss=64640.94921875
+epoch 10/99, train loss=180.5850067138672, train l2_loss=45882.78515625
+epoch 11/99, train loss=219.10708618164062, train l2_loss=86366.703125
+epoch 12/99, train loss=177.52127075195312, train l2_loss=47697.3984375
+epoch 13/99, train loss=174.69773864746094, train l2_loss=56356.51171875
+epoch 14/99, train loss=172.5600128173828, train l2_loss=42518.05078125
+epoch 15/99, train loss=219.7656707763672, train l2_loss=67109.859375
+epoch 16/99, train loss=181.81039428710938, train l2_loss=51165.76171875
+epoch 17/99, train loss=164.01051330566406, train l2_loss=46104.81640625
+epoch 18/99, train loss=152.45118713378906, train l2_loss=34247.65625
+epoch 19/99, train loss=159.69064331054688, train l2_loss=33926.2109375
+epoch 20/99, train loss=205.53848266601562, train l2_loss=71525.109375
+epoch 21/99, train loss=188.52163696289062, train l2_loss=52776.44921875
+epoch 22/99, train loss=218.9775390625, train l2_loss=81025.8125
+epoch 23/99, train loss=179.97706604003906, train l2_loss=56726.78515625
+epoch 24/99, train loss=223.5687255859375, train l2_loss=77196.578125
+epoch 25/99, train loss=197.54074096679688, train l2_loss=64341.73046875
+epoch 26/99, train loss=173.0868377685547, train l2_loss=53209.40625
+epoch 27/99, train loss=187.1912078857422, train l2_loss=61797.7734375
+epoch 28/99, train loss=170.65281677246094, train l2_loss=42591.71875
+epoch 29/99, train loss=215.26344299316406, train l2_loss=78492.8203125
+epoch 30/99, train loss=144.3345489501953, train l2_loss=30400.25
+epoch 31/99, train loss=201.88052368164062, train l2_loss=62171.1953125
+epoch 32/99, train loss=208.90267944335938, train l2_loss=73930.921875
+epoch 33/99, train loss=216.5876922607422, train l2_loss=80437.171875
+epoch 34/99, train loss=148.2108917236328, train l2_loss=33709.21484375
+epoch 35/99, train loss=209.53897094726562, train l2_loss=74328.5234375
+epoch 36/99, train loss=193.9014434814453, train l2_loss=47463.80078125
+epoch 37/99, train loss=165.39430236816406, train l2_loss=40052.1796875
+epoch 38/99, train loss=167.82577514648438, train l2_loss=49963.9140625
+epoch 39/99, train loss=190.7433624267578, train l2_loss=53240.24609375
+epoch 40/99, train loss=205.29135131835938, train l2_loss=62056.38671875
+epoch 41/99, train loss=174.3276824951172, train l2_loss=39709.03125
+epoch 42/99, train loss=207.88247680664062, train l2_loss=77652.75
+epoch 43/99, train loss=195.6753387451172, train l2_loss=59505.8359375
+epoch 44/99, train loss=160.55902099609375, train l2_loss=43884.7265625
+epoch 45/99, train loss=144.9062042236328, train l2_loss=39692.87109375
+epoch 46/99, train loss=188.97030639648438, train l2_loss=56606.62109375
+epoch 47/99, train loss=179.83718872070312, train l2_loss=54903.546875
+epoch 48/99, train loss=179.1304931640625, train l2_loss=43351.046875
+epoch 49/99, train loss=154.22836303710938, train l2_loss=34196.55078125
+epoch 50/99, train loss=188.35769653320312, train l2_loss=49321.90625
+epoch 51/99, train loss=193.7462921142578, train l2_loss=64159.78125
+epoch 52/99, train loss=186.57977294921875, train l2_loss=59721.1796875
+epoch 53/99, train loss=194.98956298828125, train l2_loss=61551.765625
+epoch 54/99, train loss=196.4718780517578, train l2_loss=58211.67578125
+epoch 55/99, train loss=199.98960876464844, train l2_loss=69941.6875
+epoch 56/99, train loss=155.0426025390625, train l2_loss=33560.2109375
+epoch 57/99, train loss=207.86573791503906, train l2_loss=64825.5859375
+epoch 58/99, train loss=181.8885498046875, train l2_loss=56497.390625
+epoch 59/99, train loss=203.6251983642578, train l2_loss=63788.015625
+epoch 60/99, train loss=170.29312133789062, train l2_loss=44525.58984375
+epoch 61/99, train loss=194.59213256835938, train l2_loss=67355.2734375
+epoch 62/99, train loss=153.24314880371094, train l2_loss=34695.98046875
+epoch 63/99, train loss=185.9010009765625, train l2_loss=55190.68359375
+epoch 64/99, train loss=204.69239807128906, train l2_loss=64996.7890625
+epoch 65/99, train loss=203.0411376953125, train l2_loss=70204.828125
+epoch 66/99, train loss=161.79339599609375, train l2_loss=40222.4609375
+epoch 67/99, train loss=230.18971252441406, train l2_loss=81131.21875
+epoch 68/99, train loss=201.83578491210938, train l2_loss=67305.8046875
+epoch 69/99, train loss=161.17254638671875, train l2_loss=40049.078125
+epoch 70/99, train loss=209.66024780273438, train l2_loss=55787.140625
+epoch 71/99, train loss=135.33717346191406, train l2_loss=25379.744140625
+epoch 72/99, train loss=199.8897705078125, train l2_loss=64444.36328125
+epoch 73/99, train loss=138.24267578125, train l2_loss=31273.740234375
+epoch 74/99, train loss=186.96136474609375, train l2_loss=54934.8984375
+epoch 75/99, train loss=178.46636962890625, train l2_loss=53958.06640625
+epoch 76/99, train loss=224.37823486328125, train l2_loss=74941.7265625
+epoch 77/99, train loss=223.93226623535156, train l2_loss=87495.6875
+epoch 78/99, train loss=170.1240692138672, train l2_loss=55765.76953125
+epoch 79/99, train loss=126.58236694335938, train l2_loss=22157.404296875
+epoch 80/99, train loss=203.65542602539062, train l2_loss=65179.58984375
+epoch 81/99, train loss=198.23403930664062, train l2_loss=66404.4375
+epoch 82/99, train loss=168.8348388671875, train l2_loss=49070.6640625
+epoch 83/99, train loss=179.79827880859375, train l2_loss=40956.44921875
+epoch 84/99, train loss=206.8621826171875, train l2_loss=67645.234375
+epoch 85/99, train loss=172.3373260498047, train l2_loss=42221.75
+epoch 86/99, train loss=209.09530639648438, train l2_loss=73039.6015625
+epoch 87/99, train loss=180.5352020263672, train l2_loss=50296.2109375
+epoch 88/99, train loss=205.5210418701172, train l2_loss=71592.6484375
+epoch 89/99, train loss=187.03102111816406, train l2_loss=58144.4765625
+epoch 90/99, train loss=232.60757446289062, train l2_loss=72953.3203125
+epoch 91/99, train loss=162.9457550048828, train l2_loss=48145.88671875
+epoch 92/99, train loss=222.2899169921875, train l2_loss=77059.9375
+epoch 93/99, train loss=202.92626953125, train l2_loss=55396.9296875
+epoch 94/99, train loss=141.00204467773438, train l2_loss=27240.41015625
+epoch 95/99, train loss=203.32032775878906, train l2_loss=67050.8984375
+epoch 96/99, train loss=153.9362030029297, train l2_loss=36412.125
+epoch 97/99, train loss=171.16818237304688, train l2_loss=46210.8203125
+epoch 98/99, train loss=171.25863647460938, train l2_loss=46838.8359375
+====== FLOAT32 MODEL RESULT 100 EPOCHS ======
+Validation l1_loss = 740.1911747630049, l2_loss = 625332.8708079269, mc = nan
+====== INT8 MODEL RESULT 100 EPOCHS ======
+Validation l1_loss = 740.1911747630049, l2_loss = 625332.8708079269, mc = nan
+--------------------------------------------
+====== FLOAT32 MODEL WEIGHTS ======
+Bias input - hidden [0.0914500504732132, 0.21281364560127258]
+Weight input - hidden [[-0.19751544296741486], [0.0025432591792196035]]
+Bias hidden - hidden [-0.5507422089576721, 0.42137962579727173]
+Weight hidden - hidden [[0.04735308140516281, 0.6825329661369324], [-0.5262014269828796, -0.6112266778945923]]
+Bias hidden - output [-0.2688632309436798]
+Weight hidden - output [[-0.3540257513523102, 0.5604366660118103]]
+====== INT8 MODEL WEIGHTS ======
+Bias input - hidden [-0.5477697849273682, -0.7143690586090088]
+Weight input - hidden [[-127], [2]]
+Bias hidden - hidden [-0.14478565752506256, 1.5550504922866821]
+Weight hidden - hidden [[9, 127], [-98, -114]]
+Bias hidden - output [-0.2688632309436798]
+Weight hidden - output [[-81, 127]]
