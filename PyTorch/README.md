@@ -1,4 +1,4 @@
-# Brownian Circuits Visualizaiton
+# Brownian Circuits Visualization
 
 ## 環境設定
 
@@ -9,79 +9,69 @@ Python version = 3.11.5
 インストール方法：
 
 ```bash
-curl -sSL https://install.python-poetry.org | python3 -
+pip install -r requirements.txt
 ```
 
-出力されたコメントを確認して、```poetry```を環境変数に追加します。
-
-```bash
-poetry install
-poetry shell
-```
 
 ## 実行
 
-実行スクリプトを3つに分けています：「回帰」、「分類」と「メモリー」。
+4種類のCase study回路を用意しています．
 
-- 回帰課題：旅客数予測，S&P500予測
-- 分類課題：Google's Speech Commands Dataset，Iris
-  - 最後の層の後にSoftmax関数を追加。
-- メモリー：過去の入力予測タスク
+- 半加算器：half_adder
+- 全加算器：full_adder
+- レジスタ：register
+- 3bit条件付きカウンター：3bit_conditional_counter
 
-### 回帰データセット
-
-対象データセット：
-
-- S&P500予測（```SP500```）
-- 旅客数予測（```airline-passengers```）
-
-```run_regression.py```を実行すると，float32とint8のモデルが```tflite_models```というフォルダに保存されます。
-
-実行ファイル：
+それぞれのディレクトリでpythonファイルを実行すればOKです．
+実行例：half_adder
 
 ```bash
-python run_regression.py
+cd ./web_app/half_adder
+python half_adder.py
 ```
 
-設定パラメータは以下：
+## 入力回路の変更
+
+入力する回路情報はそれぞれエクセルで管理しています．
+マクロをONにしてファイルを開き「diagramシート」で回路図を設計します．
+記載ルールは「colorシート」を参照．
+設計が終わったらマクロの```diagram2schematic```を実行すると「schematicシート」が更新されます．
+各ソースコードは「schematicシート」を読み込んで実行するため，編集後エクセルを保存．
+
+
+## ソースコードの注意点
+
+現状，各ソースコードは回路図に応じて作り替えています．
+この理由は，下記のとおりです
+
+- 入力位置をベタ書き（変数に直接定義）しているため
+- 
+- トークンの個数に柔軟に対応できるようになっていないため
+
+
 
 ```python
-DATASET_NAME = "SP500"
-# DATASET_NAME = "airline-passengers"
+### 初回入力パターン
+###I1: 0
+x1 = 3
+y1 = 8
+###I1: 1
+#x1 = 3
+#y1 = 18
 
-EPOCHS = 100
-ACTIVATION = "custom"
-custom_max_value = 255.0
-DATA_SIGMA = 255.0
-HIDDEN_SIZE = 10
-SEQUENCE_LENGTH = 20
-```
+###I2: 0
+x2 = 4
+y2 = 1
+###I2: 1
+#x2 = 14
+#y2 = 1
 
-### 分類データセット
-
-対象データセット：
-
-- Google's Speech Commands Dataset（```speech_commands```）
-- Iris（```iris```）
-
-```run_classification.py```を実行するとfloat32とint8のモデルが```tflite_models```というフォルダに保存されます。
-
-実行ファイル：
-
-```bash
-python run_classification.py
-```
-
-設定パラメータは以下：
-
-```python
-DATASET_NAME = "speech_commands"
-# DATASET_NAME = "iris"
-
-EPOCHS = 100
-ACTIVATION = "custom"
-HIDDEN_SIZE = 10
-MAX_SEQUENCE_LENGTH = 1600
+###Carry: 0
+x3 = 26
+y3 = 3
+###Carry: 1
+#x3 = 36
+#y3 = 3
 ```
 
 分類データセットに対して、custom活性化関数のスケールを1に固定しています。
