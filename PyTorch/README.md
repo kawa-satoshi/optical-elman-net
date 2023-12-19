@@ -1,13 +1,12 @@
-# RNNの実験モデル
+# Brownian Circuits Visualizaiton
 
 ## 環境設定
 
-Python version = 3.10.12
+Python version = 3.11.5
 
-ライブラリーの一覧：```requirements.txt```ですが、
-管理のためにこのプロジェクトでPoetryというライブラリーを使用しています。
+ライブラリーの一覧：```requirements.txt```
 
-インストール方法：<https://python-poetry.org/docs/>
+インストール方法：
 
 ```bash
 curl -sSL https://install.python-poetry.org | python3 -
