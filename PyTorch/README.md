@@ -23,6 +23,7 @@ pip install -r requirements.txt
 - 3bit条件付きカウンター：3bit_conditional_counter
 
 それぞれのディレクトリでpythonファイルを実行すればOKです．
+
 実行例：half_adder
 
 ```bash
@@ -45,10 +46,14 @@ python half_adder.py
 この理由は，下記のとおりです
 
 - 入力位置をベタ書き（変数に直接定義）しているため
-- 
 - トークンの個数に柔軟に対応できるようになっていないため
+- トークンの個数に対応したCjoinゲートの合致条件，ならびに，終了条件を設定していないため
 
+### full_adder.pyを例に具体的に説明します．
 
+入力位置をベタ書き（変数に直接定義）しているというのは，ソースコード中の27-47行目に相当します．
+こちらをコメントアウトすることで，入力のスタート位置を変更する構造になっています．
+回路情報からスタート位置を検出するようできるとありがたいです．
 
 ```python
 ### 初回入力パターン
@@ -74,68 +79,53 @@ y3 = 3
 #y3 = 3
 ```
 
-分類データセットに対して、custom活性化関数のスケールを1に固定しています。
-
-Google's Speech Commands Datasetデータセットの入力サイズが16,000というかなり長い時系列であるため、```MAX_SEQUENCE_LENGTH```を設定しています。行った実験では最初の1,600のみを使用して、コマンドを分類しています。
-
-### メモリー課題
-
-対象データセット：
-
-- メモリー（```memory```）
-
-```run_memory.py```を実行するとfloat32とint8のモデルが```tflite_models```というフォルダに保存されます。
-
-実行ファイル：
-
-```bash
-python run_memory.py
-```
-
-設定パラメータは以下：
+トークンの個数に柔軟に対応できるようになっていないというのは，ソースコード438-440行目のSignalのインスタンス化とinitialization関数とstart関数とdraw_signal関数に相当します．
+こちらが信号トークンの数に依存したインスタンス化/引数の個数という設計になっています．
+回路に依存してトークンの数が決定するため，現状では回路毎にソースコードを書き換える状況となっております．
+こちらも，回路情報からトークンの数（=スタート位置の数）を入手して柔軟に対応できるとありがたいです．
 
 ```python
-DATASET_NAME = "memory"
-
-EPOCHS = 100
-ACTIVATION = "tanh"
-custom_max_value = 1.0
-HIDDEN_SIZE = 10
-
-MEMORY_SIGNAL_LENGTH = 1024
-MEMORY_N = 100
-MEMORY_K = 1
+signal1 = Signal(x1, y1)
+signal2 = Signal(x2, y2)
+signal3 = Signal(x3, y3)
+initialization(signal1, signal2, x1, y1, x2, y2, x3, y3)
+while loop_flag:
+  start(signal1, signal2, signal3)
 ```
 
-[-1, 1]一様分布に従い、ランダムにサンプリングしたデータを1つの時系列データとして使用しています。
+トークンの個数に対応したCjoinゲートの合致条件を設定していないというのは，ソースコード363-390行目に相当します．
+Cjoinゲートは2つのトークンが特定の位置に存在したときのみ”機能する”ので，どのトークンの組み合わせでゲートが”機能する”かをチェックする機構がトークンの数に依存することになります．
+この組み合わせをベタに書いているので，現状では回路毎にソースコードを書き換える状況となっております．
+こちらも，回路情報からトークンの数（=スタート位置の数）を入手して柔軟に対応できるとありがたいです．
 
-また、```N```値を入力とし、その```K```値後の数字を予測値として設定しています。
+```python
+# Cjoin check
+signal1.Cjoin_check()
+signal2.Cjoin_check()
+signal3.Cjoin_check()
 
-RNNに```1```時点値から```N```時点値の数値を入力し、```N-K```時点値を直接予測します。
+cjoin_check_list = []
+if signal1.cjoin_flag==1:
+  cjoin_check_list.append(1)
+if signal2.cjoin_flag==1:
+  cjoin_check_list.append(2)
+if signal3.cjoin_flag==1:
+  cjoin_check_list.append(3)
 
-また、1つのランダム生成された時系列データを覚えることが課題であるため、学習データとバリデーションデータを分けないことが適切だと判断しました。
+for x in itertools.combinations(cjoin_check_list, 2): 
+  if (x[0] == 1) and (x[1] == 2): 
+    cjoin_execute(signal1, signal2)
+  elif (x[0] == 1) and (x[1] == 3): 
+    cjoin_execute(signal1, signal3)
+  elif (x[0] == 2) and (x[1] == 3): 
+    cjoin_execute(signal2, signal3)
 
-メモリーデータセットに対して、[-1, 1]一様分布を使用のため、custom活性化関数のスケールは1でのご利用を予想しています。
+# End check
+signal1.End_check()
+signal2.End_check()
+signal3.End_check()
+if (signal1.end_flag==1) and (signal2.end_flag==1) and (signal3.end_flag==1):
+  print(step)
+  break
+```
 
-## 実装済み実験について
-
-使用可能のデータセット
-
-- S&P500予測（SP500）
-- 旅客数予測（airline-passengers）
-- Google's Speech Commands Dataset（speech_commands）
-- Iris（iris）
-- メモリー（memory）
-
-使用可能のactivation function：
-
-- relu
-- tanh
-- custom:（0-<custom_max_value>）でのスケールsqrt
-
-学習終了後、モデルのint8化を行いますが、ニューロン数と層数が少ないため、結果の劣化が非常に大きいことを確認しました。
-
-## Int8モデルについて
-
-- Tensorflowのquantization手法による結果に精度が低いことを確認。
-- Tensorflow-liteに変える必要があるため、RNN重みを出力する事が出来ないため、PyTorchで提供。
